@@ -1,4 +1,4 @@
-package hello;
+package league_manager;
 
 public class Greeting {
 
