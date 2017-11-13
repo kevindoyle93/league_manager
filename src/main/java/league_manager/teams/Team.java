@@ -12,6 +12,15 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    // For JPA
+    public Team() {
+
+    }
+
+    public Team(String name) {
+        this.name = name;
+    }
+
     private String name;
 
     public long getId() {
