@@ -1,13 +1,11 @@
-package league_manager.teams;
+package league_manager.players;
 
-import league_manager.players.Player;
+import league_manager.teams.Team;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-public class Team {
+public class Player {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,17 +14,16 @@ public class Team {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "team")
-    private List<Player> squad;
+    @ManyToOne
+    private Team team;
 
-    // For JPA
-    public Team() {
+    public Player() {
 
     }
 
-    public Team(String name) {
+    public Player(String name, Team team) {
         this.name = name;
-        this.squad = new ArrayList<>();
+        this.team = team;
     }
 
     public Long getId() {
@@ -45,11 +42,11 @@ public class Team {
         this.name = name;
     }
 
-    public List<Player> getSquad() {
-        return squad;
+    public Team getTeam() {
+        return team;
     }
 
-    public void setSquad(List<Player> squad) {
-        this.squad = squad;
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
