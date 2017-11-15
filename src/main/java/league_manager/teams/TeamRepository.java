@@ -10,4 +10,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
     List<Team> findByName(@Param("name") String name);
+    List<Team> findByNameIgnoreCaseContaining(@Param("name") String name);
 }
