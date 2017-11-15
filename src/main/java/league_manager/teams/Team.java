@@ -1,5 +1,6 @@
 package league_manager.teams;
 
+import league_manager.matches.Match;
 import league_manager.players.Player;
 
 import javax.persistence.*;
@@ -18,6 +19,12 @@ public class Team {
 
     @OneToMany(mappedBy = "team")
     private List<Player> squad;
+
+    @OneToMany(mappedBy = "homeTeam")
+    private List<Match> homeMatches;
+
+    @OneToMany(mappedBy = "awayTeam")
+    private List<Match> awayMatches;
 
     // For JPA
     public Team() {

@@ -1,5 +1,7 @@
 package league_manager;
 
+import league_manager.matches.Match;
+import league_manager.matches.MatchRepository;
 import league_manager.players.Player;
 import league_manager.players.PlayerRepository;
 import league_manager.teams.Team;
@@ -16,6 +18,8 @@ public class Application implements CommandLineRunner {
     TeamRepository teamRepository;
     @Autowired
     PlayerRepository playerRepository;
+    @Autowired
+    MatchRepository matchRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -35,5 +39,9 @@ public class Application implements CommandLineRunner {
         Team spurs = teamRepository.save(new Team("Tottenham Hotspur"));
         playerRepository.save(new Player("Kane", spurs));
         playerRepository.save(new Player("Eriksen", spurs));
+
+        matchRepository.save(new Match(arsenal, manUtd));
+        matchRepository.save(new Match(manUtd, spurs));
+        matchRepository.save(new Match(spurs, arsenal));
     }
 }
