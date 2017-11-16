@@ -59,4 +59,19 @@ public class Team {
     public void setSquad(List<Player> squad) {
         this.squad = squad;
     }
+
+    public List<Match> getHomeMatches() {
+        return homeMatches;
+    }
+
+    public List<Match> getAwayMatches() {
+        return awayMatches;
+    }
+
+    public List<Match> getMatches() {
+        List<Match> matches = new ArrayList<>();
+        matches.addAll(getHomeMatches());
+        matches.addAll(getAwayMatches());
+        return matches;
+    }
 }
